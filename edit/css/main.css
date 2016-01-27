@@ -1,0 +1,191 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10/01/2016, 11:55:24 PM
+    Author     : kai
+*/
+
+html, body {
+    min-height: 100%;
+    width: 100%;
+    overflow: scroll;      
+}
+
+h1, h2, h3, h4, h5, p, div, a, th, tr, button {
+    /*font-family: 'Josefin Sans', Calibri, sans-serif, "Helvetica Neue", Helvetica;*/
+}
+
+.row {
+    /*border: 2px blue solid;*/
+}
+
+.columns {
+    /*border: 2px red solid;*/
+}
+
+th {
+    cursor: pointer;
+    background-color: #d24d57 !important;
+    color: white;
+    text-align: center !important;
+}
+
+/*.tr-clickable-dj .tr-clickable-event {
+    cursor: pointer;
+}*/
+
+tr{
+    cursor: pointer;
+}
+
+.dj-selected {
+    background-color: #f5d6d9 !important;
+}
+
+.event-selected {
+    background-color: #86fa97 !important;
+}
+
+.dropzone {
+    border: blue 2px dashed !important;
+    font-family: futura;
+    vertical-align: middle;
+    
+}
+.dropzone:hover {
+    background: #fce6e2;
+}
+
+#event-wrap {
+    background: #fafafa;
+    min-height: 100%;
+}
+
+.dialogIsOpen #event-wrap {    
+    /* Blur and de-color */
+    -webkit-filter: blur(5px) brightness(50%);
+    -moz-filter: blur(5px) brightness(50%);
+    -o-filter: blur(5px) brightness(50%);
+    -ms-filter:blur(5px) brightness(50%);
+    filter:  blur(5px) brightness(50%);
+    
+    pointer-events: none;
+}
+
+.modal-dialog{     
+    display: none;
+    
+    position: absolute;
+    overflow: scroll;
+    top: 0;        
+
+    width: 100vw;
+    min-height: 100vh;
+    background: beige;
+    /*opacity: 0.7;*/
+    
+    /*border: black 5px solid;*/
+}
+
+
+/*
+.dialogIsOpen #create-dj-modal {
+    display: inline-block;
+}*/
+
+.show-me {
+    display: inline-block;
+}
+
+.prevent-interaction {
+    /* Blur and de-color */
+    -webkit-filter: blur(5px) brightness(50%);
+    -moz-filter: blur(5px) brightness(50%);
+    -o-filter: blur(5px) brightness(50%);
+    -ms-filter:blur(5px) brightness(50%);
+    filter:  blur(5px) brightness(50%);
+    
+    pointer-events: none;
+}
+
+
+.quit-button {
+
+}
+
+
+
+
+
+/*SPINNER*/
+#spinner-wrap{
+
+    z-index: 100000;
+    position: fixed;
+    top: 10%;
+    left: 33%;
+    
+    width: 33vw;
+    height: 10vw;
+
+    background: rgba(65, 131, 215, 0.3);
+
+    border-radius: 10px;
+    border: solid black 1px;
+
+    text-align: center;
+}
+
+.spinner {
+position: relative;
+  margin: 0 auto;
+  width: 7.5vw;
+  height: 7.5vw;
+  
+  text-align: center;
+
+  
+  -webkit-animation: sk-rotate 2.0s infinite linear;
+  animation: sk-rotate 2.0s infinite linear;
+}
+
+.dot1, .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: #fff;
+  border-radius: 100%;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
+@keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}

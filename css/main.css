@@ -1,0 +1,363 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 06/01/2016, 12:16:09 PM
+    Author     : kai
+*/
+
+
+@font-face {
+    font-family: bebas;
+    src: url('../fonts/BebasNeueRegular.otf');
+}
+
+@font-face {
+    font-family: bebas;
+    src: url("../fonts/BebasNeueBold.otf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: norwester;
+    src: url('../fonts/norwester.otf');
+}
+
+.font-style {
+    font-family: norwester;
+    color: white;
+}
+
+.font-bebas {
+    font-family: bebas;
+    color: white;
+}
+
+html {
+    height: 100%;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a, a:hover, a:visited {
+    font-family: norwester;
+    color: white;
+    webkit-transform: translate3d(0, 0, 0);
+    /*overflow-x: hidden; Blurred pictures are bigger tthna 100vw*/
+}
+
+a, a:hover, a:visited {
+    text-decoration: none;
+}
+
+.shadow {
+  -webkit-text-stroke: 1px black;
+  
+  text-shadow:
+  1px 1px 0 #000,
+  -1px -1px 0 #000,  
+  1px -1px 0 #000,
+  -1px 1px 0 #000;
+}
+
+.text-glow {
+  text-shadow: -1px -2px 7px rgba(255, 255, 255, 0.5);   
+}
+
+.shadow-small {
+  -webkit-text-stroke: 0.5px black;
+  
+  text-shadow:
+      0.5px 0.5px 0 #000,
+      -0.5px -0.5px 0 #000,  
+      0.5px -0.5px 0 #000,
+      -0.5px 0.5px 0 #000;
+}
+
+/*BIG PICTURE BIG PICTURE BIG PICTURE BIG PICTURE BIG PICTURE BIG PICTURE BIG PICTURE BIG PICTURE BIG PICTURE BIG PICTURE BIG PICTURE*/
+
+.general-section {
+    min-height: 100%;
+    min-height: 100vh;
+        
+    /*padding-bottom: 10vh;*/
+    
+    background-origin: border-box;
+    overflow: hidden !important;
+    /*background-color: purple;*/
+    /*border: solid red 2px;*/
+}
+
+/*BACKGROUNDS BACKGROUNDS BACKGROUNDS BACKGROUNDS BACKGROUNDS BACKGROUNDS BACKGROUNDS BACKGROUNDS BACKGROUNDS */
+
+.slide-bg-texture {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  
+  display: block;
+  width: 100%;
+  height: 100%;   
+}
+
+#slide-start-texture {
+    background:   url('../img/title.jpg') no-repeat center center; 
+    background-size: cover;  
+}
+
+@media screen and (max-width: 810px) {
+    #slide-start-texture {
+        background:   url('../img/title-small-web.jpg') no-repeat center center; 
+        background-size: cover;  
+    }
+}
+/*
+#slide-start {
+      background:   url('../img/bg.jpg') no-repeat center center; 
+  background-size: cover; 
+}*/
+
+
+#slide-video-texture {
+    background:   url('../img/bg.jpg') no-repeat center center; 
+  background-size: cover; 
+}
+
+/*So you can blur the images from FACEBOOK*/
+.slide-blur-bg {
+  content: "";
+  position: absolute;
+  /*top: 0;*/
+  left: 0;
+  right: 0;
+  z-index: -2;
+  background: green;
+  display: inline;
+  
+  width: 100%;
+  width: 100vw !important;
+  min-height: 100vh !important;
+  /*height: 100%;*/ 
+          
+  /*margin: -5px -10px -10px -5px;*/
+  /*Drop the brightness so the white text can sit on anything*/
+  filter: blur(2px) brightness(75%);
+  -webkit-filter: blur(2px) brightness(75%);
+  -webkit-transform: translate3d(0, 0, 0); 
+  /*3d transform forces the GPU to handle the gaussian blur  - otherwise VERY LAGGY*/
+}
+
+.blur-bg-wrap {
+    width: 100vw !important;
+    overflow: hidden !important;
+}
+
+/*Default preloaded shit*/
+#slide-djs-background {
+    background: url(../img/defaultbgs/night-crowd-blur.jpg)  no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+#slide-info-background {
+   background: url(../img/defaultbgs/midshot.jpg)  no-repeat center center fixed;
+    background-size: cover; 
+}
+
+/*SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS */
+/*SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS */
+/*SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS - SPECIFIC SINGLE ELEMENTS */
+
+.scroll-hint {
+    position: fixed;    
+    bottom: 0;
+    opacity: 0.75;
+}
+
+#scroll-hint-one {
+    
+    left: 2%;
+    left: 2vw;
+}
+#scroll-hint-two {
+    right: 2%;
+    right: 2vw;
+}
+
+#nav-bar{
+    background: transparent;
+}
+
+.slide-title {
+    margin-top: 2%;
+    margin-top: 2vh;
+    color: white;
+    font-size: 70px;
+}
+
+#slide-start {
+ /*display: ruby;*/
+ overflow: auto;
+}
+
+.small-bar {
+    display: none;
+}
+@media screen and (max-width: 640px) {
+    
+    .small-bar {
+        display: block;
+        width: 50vw;
+        
+    }    
+}
+
+
+
+.city-link {
+    cursor: pointer;
+    color: white;
+    font-size: 25px;
+}
+
+@media screen and (max-width: 640px) {
+    
+    .city-link {
+        font-size: 5vw;
+    }  
+}
+
+
+.start-info {
+    border-top: solid white 2px;
+    border-bottom: solid white 2px;
+    /*background: rgba(0,0,0,0.025);*/
+}
+/*HIde the borthers*/
+@media screen and (max-width: 640px) {
+    
+    .start-info {
+        border-top: none;
+        border-bottom: none;
+        /*background: rgba(0,0,0,0.025);*/
+    }
+}
+
+.small-bar {
+    border: none;
+    height: 2px;
+    width: 45vw;
+    color: white;
+    background-color: white;
+}
+
+#row-info {
+    margin-top: 50vh;
+    bottom: 10vh;
+    
+       display: block;
+    overflow: auto;
+}
+
+.dj-info {    
+    padding: 2% 0 2% 0;
+    padding: 2vh 0 2vh 0;        
+}
+
+/*SAD BUT cant make foundation size dynamicalyl added shit*/
+.dj-img {
+   /* height: 30%;
+    height: 30vh !important;   
+    width: auto;*/
+}
+
+@media screen and (max-width: 640px) {
+    /*Important overrides the foundation 1-up resizing*/
+       .dj-img {
+        height: 30%;
+        height: 30vh  !important;       
+        width: auto  !important;
+    }  
+}
+
+
+#slide-info-text {
+     /*vertical-align: middle;*/
+     /*position :absolute;*/
+
+     
+}
+
+#slide-info {
+    overflow: hidden;    
+}
+
+
+#ticket-link {
+  margin-top: 5%;
+    margin-top: 5vh;
+}
+
+/*Super debug shit*/
+/*
+#slide-djs {
+  border: 4px red solid;
+}
+
+.bg-img {
+  border: 10px green dashed;
+}
+
+.slide-bg-texture {
+ border: 11px yellow solid; 
+}
+
+.clear-bg {
+  border: 5px blue solid;
+}
+*/
+
+/*Socials bar*/
+.sticky-container{
+    /*background-color: #333;*/
+    padding: 0px;
+    margin: 0px;
+    position: fixed;
+    left: 10px;
+    /*bottom: 30%;*/
+    top: 105px;
+    /*width: 200px;*/
+
+  }
+
+
+.socials-icon:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+  -webkit-transition: background-color 0.5s, -webkit-transform 0.5s ease-out;
+  transition: background-color 0.5s, -webkit-transform 0.5s ease-out;
+  transition: background-color 0.5s, transform 0.5s ease-out;
+  transition: background-color 0.5s, transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
+}
+
+.socials-icon {
+  margin-bottom: 5px;
+  border-radius: 100%;
+  color: white;
+  fill: white;
+  background: blue;
+}
+
+#icon-facebook{
+  background: #008891;
+}
+
+#icon-insta {
+ background: #00587A; 
+}
+
+#icon-twitter {
+  background: #0F3057;
+}

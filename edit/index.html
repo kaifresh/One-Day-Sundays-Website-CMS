@@ -1,0 +1,711 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CREATE AN ODS</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    
+    <!-- Picka date -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.date.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Dropzone -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css' rel="stylesheet" type="text/css"/>
+    
+    <!-- JQUERY -->
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/eggplant/jquery-ui.css">
+
+    <!-- FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'>
+
+    <!-- ALL ME -->
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+
+    <div id="spinner-wrap">
+        <div class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>
+    </div>
+
+    <div id="event-wrap">
+
+        <div class="row">
+            <div id='event-list' class="medium-8 small-centered text-center columns">
+                <h1 id='main-title'><b><i>~ One Day Sundays Edit ~</i></b></h1>
+
+            </div>
+        </div>
+        
+        <div class='callout large'>
+
+            <div class="row">
+                <div class="small-12 columns text-center">                            
+                    <input type="text" id="search-events" placeholder="Type to search events">
+                </div>                        
+            </div>
+
+            <div class="row">
+                <div class="small-12 columns text-center">                            
+                    <table id="events-table" class="hover small-12 columns" data-sortable>
+                        <thead>
+                            <tr>
+                                <th width="200">City</th>
+                                <th>Date</th>
+                                <th width="150">Displaying</th>
+                                <th width="150">ID</th>
+                                <th width="150">Click to Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id='event-rows'>
+
+                            <!-- PROGRAMMATICALLY ADD EVENTS -->
+
+                        </tbody>
+                    </table>
+                </div>                        
+            </div>
+
+            
+            
+            <div class="row">
+                <div class="small-12 columns text-center">                            
+                    <div class="expanded button-group">
+                        <a id='create-event-show' class="success button">Create Event</a>                                
+                    </div>                        
+                </div>                    
+            </div>
+
+        </div>
+
+        <div class='callout large'>
+            <div class='row'>
+                <div class='small-12 columns text-center'>
+                    <h3><b><i>Set the EMBED URL for the video</i></b></h3>
+                </div>                
+            </div>
+            <div class='row'>
+                <div class='small-12 columns text-center'>
+                    <input id="video-url" type="text" name="" value="" placeholder="URL FOR VIDEO" title="Make sure this is an embed link, not just a link to the video on yt/wherever ">
+                    <a id='video-url-button' class="button secondary">Set Video</a>  
+                </div>                
+            </div>
+        </div>
+
+    </div>
+        <!--everything in this div is blurredc
+        
+        
+        <!--EVENT CREATION POPUP - A:SP HIDDEN-->
+        <div id="create-event-modal" class="modal-dialog">
+
+            <div class="row" >
+                <div id='message' class="medium-8 small-centered text-center columns">
+                    <a id="create-event-quit" class='quit-button float-right'><img width=25 height=25 src="img/cross.png"></a>
+                    <h1><b>CREATE OR EDIT AN ODS</b></h1>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="callout large">                                                
+
+
+                        <div class="row">                        
+                            <div class="large-12 columns">
+                                <div class="expanded button-group">
+                                    <a class="success hollow button city-button">Sydney</a>
+                                    <a class="success hollow button city-button">Melbourne </a>
+                                    <a class="success hollow button city-button">Brisbane</a>
+                                    <a class="success hollow button city-button">Perth</a>
+                                </div>
+                            </div>                                                                       
+                        </div>
+
+
+                        <div class="row">
+                            <div class="small-4 columns">                            
+                                <p>Creating an event for <b><h1 id="event-setting-city">....</h1></b></p>                            
+                            </div>
+                            <div class="small-6 columns">                            
+                                <p>When is the event?</p>
+                                <input id='event-setting-date' class="datepicker" type="text" placeholder="Pick a Sunday">                            
+                            </div>                        
+                        </div>
+                        
+                    </div>
+
+                    <div class="callout large">
+                        <div class="row">
+                            <div class="small-12 columns text-center">                            
+                                <h1><b>Select DJs playing at this ODS</b></h1>                            
+                            </div>                        
+                        </div>
+
+                        <div class="row">
+                            <div class="small-12 columns text-center">                            
+                                <input type="text" id="search-djs" placeholder="Type to search djs">
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="small-12 columns text-center">                            
+                                <table class="hover small-12 columns" data-sortable>
+                                    <thead>
+                                        <tr>
+                                            <th width="200">DJ Name</th>
+                                            <th>Bio</th>
+                                            <th width="150">Image</th>
+                                            <th width="150">id</th>
+                                            <th width="150">Click to Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dj-rows">
+                                        <!-- <tr class="tr-clickable-dj">
+                                            <td class="dj-name">Name</td>
+                                            <td class="dj-bio">Put the bio in here</td>
+                                            <td class="dj-img-url">ornos.png</td>
+                                            <td class="dj-id">1</td>
+                                            <td class="dj-edit"><button>EDIT THIS DJ</button></td>
+                                        </tr> 
+                                        <tr class="tr-clickable-dj">
+                                            <td class="dj-name">PPPPP</td>
+                                            <td class="dj-bio">Put the bio in here</td>
+                                            <td class="dj-img-url">djpicture.png</td>
+                                            <td class="dj-id">2</td>
+                                            <td class="dj-edit"><button>EDIT THIS DJ</button></td>
+                                        </tr>  -->
+                                    </tbody>
+                                </table>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="small-12 columns text-center">                            
+                                <div class="expanded button-group">
+                                    <a id='create-dj-show' class="warning hollow button">Create A DJ</a>                                
+                                </div>                        
+                            </div>                    
+                        </div>                    
+                    </div>
+
+                    <div class="callout large">
+                        <div class="row">
+                            <div class="small-12 columns text-center">
+                                <h1><b>Immediately display event on creation?</b></h1>
+                                <p>(If it is the next one up)</p>
+                                <div class="switch large">
+                                    <input class="switch-input" id="event-setting-display" type="checkbox" name="exampleSwitch">
+                                    <label class="switch-paddle" for="event-setting-display">
+                                        <span class="show-for-sr">Immediately display event on creation?</span>
+
+                                        <span class="switch-active" aria-hidden="true">Yes</span>
+                                        <span class="switch-inactive" aria-hidden="true">No</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="callout large">
+                        <div class="row">                        
+                            <div class="large-12 columns">
+                                <h3>ID: <span id="event-create-edit-id">-1</span></h3>
+                            </div>                                                                       
+                        </div>
+
+                        <div class="row">
+                            <div class="small-12 columns text-center">                            
+                                <div class="expanded button-group">
+                                    <a id='create-event' class="success button">Create Or Update This Event</a>                                
+                                </div>                        
+                            </div>                    
+                        </div>
+
+                        <div class="row">
+                            <div class="small-12 columns text-center">                            
+                                <div class="expanded button-group">
+                                    <a id='event-delete' class="alert button">Delete This Event</a>                                
+                                </div>                        
+                            </div>                    
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <!--CREATE A DJ ... HIDDEN-->
+
+        <div id="create-dj-modal" class="modal-dialog">
+            <div class="row text-center">
+                <div id='message' class="medium-10 small-centered  columns">
+                    <a id="create-dj-quit" class='quit-button float-right'><img width=25 height=25 src="img/cross.png"></a>
+                    <h1><b>CREATE A DJ<b></h1> 
+                    
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="callout large">
+                        <div class='row'>
+                            <div class="medium-6 columns">
+                                <label>Name
+                                    <input id='dj-name-input' type="text" placeholder="a djs name">
+                                </label>
+                            </div>
+                            <div class="medium-6 columns">
+                                <label>
+                                    DJ BIO
+                                    <textarea id='dj-bio-input' placeholder="A small bit about the dj"></textarea>
+                                </label>
+                            </div>
+                        </div>
+                        <div class='row'>
+
+                            <!--DROP ZONE-->
+                            <div class="medium-12 columns">
+                                <form action="upload.php"
+                                class="dropzone"
+                                id="dropzone-dj-pic">
+                                <div class="dz-message" data-dz-message><span>Drop <b><em>*A<u> Square, .png</u>*</em></b> DJ Pic Here (with a transparent background &amp; saved for web)</span></div>
+                            </form>
+                        </div>
+
+
+                    </div>
+                    <div class='row'>
+                        <div class='medium-3 columns'>DJ Pic: <span id="dj-pic-input-name"></span></div>
+                        <div class="medium-6  columns">
+                            <img id="dj-pic-preview" height=100 alt="A preview of this dj's pic should be here lol. If not, you need to re upload one...">
+                        </div>
+                        <div class="medium-3 columns">                                
+                            <p>ID: <span id="dj-id-text"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-12 columns text-center">                            
+                            <div class="expanded button-group">
+                                <a id='create-dj' class="success button">Create or Update DJ</a>                                
+                            </div>                        
+                        </div>
+
+                        <div class="small-12 columns text-center">                            
+                            <div class="expanded button-group">
+                                <a id='delete-dj' class="alert button">Delete DJ</a>                                
+                            </div>                        
+                        </div>
+
+                    </div>
+                </div>              
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.date.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/js/sortable.min.js"></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js'></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+
+    <script src="js/database.js"></script>
+
+    <script>
+            $(document).foundation(); //Init foundation
+
+            $( document ).tooltip( 
+                { position: 
+                    {at: "center top", my:"center top-50"} 
+                }
+                );
+            $("th").attr('title', "Click to sort");
+
+            console.log( Foundation );
+            
+            var cityIds = [2, 3, 4, 1]; //Syd, Mel Bris Perth
+            var cityID = 0;            
+            $(".city-button").click(function(){  
+                $(".city-button").addClass('hollow');
+                $(this).removeClass('hollow');              
+                $("#event-setting-city").text(  $(this).text() );
+                cityID = cityIds[ $(this).index() ];
+            });
+
+            /*Init the tdate picker*/
+            $('.datepicker').pickadate({ 
+                selectYears: true,
+                selectMonths: true,
+                disable: [2,3,4,5,6,7] //ODS ydig
+            });
+            
+
+            /* HANDLE SEARCHES - These are called each time the bar is populated */
+            function setupEventSearch(){
+                var eventrows = $('#event-rows tr');//event-rows events-table
+                $('#search-events').keyup(function() {
+
+                    var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+                    reg = RegExp(val, 'i'),
+                    text;
+
+                    eventrows.show().filter(function() {
+                        text = $(this).text().replace(/\s+/g, ' ');
+                        return !reg.test(text);
+                    }).hide();
+                });
+            }
+            function setupDJSearch(){
+                var djrows = $('#dj-rows tr');//event-rows events-table
+                $('#search-djs').keyup(function() {
+
+                    var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+                    reg = RegExp(val, 'i'),
+                    text;
+
+                    djrows.show().filter(function() {
+                        text = $(this).text().replace(/\s+/g, ' ');
+                        return !reg.test(text);
+                    }).hide();
+                });
+            }
+            
+            /* ~ SCROLL TO TOP ~ */
+            function scrollToTop(){
+               $('html, body').animate({
+                scrollTop: 0
+            }, 500);
+           }
+
+           /*EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! */
+           /*EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! */
+           /*EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! EVENTS !! */
+              //Modal convenience functions
+              function showEventsModal(){
+                scrollToTop();
+                // $("#create-dj-modal").css({opacity: 0.0}); 
+
+                $(document.body).addClass("dialogIsOpen");
+                $("#create-event-modal").addClass("show-me");
+
+                $(".tr-clickable-dj").each(function(){
+                    $(this).removeClass("dj-selected"); //Remove any previous dj selections
+                });
+
+              // $("#create-dj-modal").animate({opacity: 1.0}, {duration: 100});
+          }
+
+          function hideEventsModal(){
+            $(document.body).removeClass("dialogIsOpen");
+            $("#create-event-modal").removeClass("show-me");
+                // $("#create-event-modal").animate({opacity: 0.0}, {duration: 400, complete: function(){                    
+
+                //     $("#create-dj-modal").css({opacity: 1.0}); 
+                // }});
+
+                // $(document.body).removeClass("dialogIsOpen");
+                // $("#create-event-modal").removeClass("show-me");
+            }
+
+            function clearEventsModal(){
+                $("#event-setting-city").text("....");
+                $(".city-button").addClass('hollow'); 
+                $("#event-create-edit-id").text("-1");
+            }
+
+
+            /*1. NEW*/
+            $("#create-event-show").click(function(){
+                clearEventsModal();
+                showEventsModal();
+            });
+            /*2. QUIT*/
+            $("#create-event-quit").click(function(){
+                hideEventsModal();                
+            });
+            
+            /*3. EDIT/ UPdate*/
+            $(document).on('click', ".event-edit", function() { 
+
+             var city = $(this).siblings('.event-city').text();
+             $("#event-setting-city").text(city);
+               $(".city-button").addClass('hollow'); //Set the color of the right button
+               $(".city-button").filter(function(index){
+                if($(this).text().toLowerCase() === city.toLowerCase()){
+                    $(this).removeClass('hollow');
+                }
+            });
+
+                var date = $(this).siblings('.event-date').text(); //FORMAT TO DATE
+                date = moment(date, 'YYYY-MM-DD');
+                $("#event-setting-date").pickadate('picker').set('select', date.toDate() );
+
+
+                 var display = $(this).siblings('.event-display').text(); //FORMAT TO BOOLEAN
+                 var displayBool = display.toString().toLowerCase() === "yes" ? true : false;
+                  $("#event-setting-display").prop('checked', displayBool); //Also needs a format
+                  console.log("Display value: ", display);
+
+                  var id = $(this).siblings('.event-id').text();
+                  $("#event-create-edit-id").text(id);
+
+                  console.log("ROW DATA: ", city, date, display, id);
+
+                  showEventsModal();
+
+                  getDjsForEvent( parseInt(id) );
+              });
+
+
+/*4. CREATE OR UPDATE - THE BIG DOG : Create an ODS - get all info frmo the DOM and send to database*/
+$("#create-event").click(function(){
+
+    /*1. Get The 4 pieces of info needed to create an event - and error check them*/
+    var city = $("#event-setting-city").text();                 
+                if (city === "...."){ alert("pick a city..."); return; } //ERRORCHECK
+                
+                var date = $("#event-setting-date").pickadate('picker').get('select', 'yyyy-mm-dd');
+                if (date === ""){ alert("set a date...."); return; } //ERRORCHECK
+
+                var djids = [];
+                var djNamesForDisplay = [];
+                $(".dj-selected").each(function(){                    
+                    var djId = $(this).children(".dj-id").text();              
+                    djids.push(djId);      
+
+                    djNamesForDisplay.push( $(this).children(".dj-name").text() );        
+                });
+                
+                if (djids.length === 0){ alert("Select some DJS...."); return; } //ERRORCHECK
+                
+                var display = $("#event-setting-display").is(":checked");
+                
+                /*~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ Present a confirmation dialog ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~*/                
+                /*~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ Present a confirmation dialog ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~*/                
+                /*~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ Present a confirmation dialog ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~*/                
+
+                var confirmString = "~ ~ Is this event you wish to create? ~ ~\n\n" + "City:\t\t" + city + "\n\nDate:\t\t" + date + "\n\nDJs:\n";               
+                for (var i = 0; i < djNamesForDisplay.length; i++){
+                    confirmString += "\t\t- " + djNamesForDisplay[i] + "\n";
+                } 
+                confirmString += "\nImmediately show this event on the website if it is the next one coming up?\n\t\t- " + display;
+
+                if (confirm(confirmString)){
+                    /*2. Ajax this info to db*/
+                    var eventID = parseInt($("#event-create-edit-id").text());                
+
+                    if (eventID == -1){
+                        createEvent(city, date, display, djids);  
+                    } else {
+                            updateEvent(city, date, display, djids, eventID); //
+                        }
+
+                        hideEventsModal();                    
+                    }
+
+                });
+
+            //5. DELETE
+            $("#event-delete").click(function(){
+
+                var eventId = parseInt($("#event-create-edit-id").text());
+                if (eventId == -1){
+                    alert("This event hasn't been created in the system yet, so its all good");
+                } else {
+
+                    if (confirm("Are you sure you want to delete this event from the system? This action cannot be undone..." )){
+                        deleteEvent(eventId);
+                    }
+                }
+
+                hideEventsModal();
+            });
+            
+            /*DJ DJD DJ DJD JD DJ DJ DJD JD JD JDJD DJ DJD JD JD DJ */
+            /*DJ DJD DJ DJD JD DJ DJ DJD JD JD JDJD DJ DJD JD JD DJ */
+            /*DJ DJD DJ DJD JD DJ DJ DJD JD JD JDJD DJ DJD JD JD DJ */
+            
+            /*Handles clicked rows - for dynamically added content*/       
+            $(document).on('click', ".tr-clickable-dj", function() {
+                $(this).toggleClass("dj-selected");
+            });
+
+            //Modal convenience functions
+            function showDJModal(){
+                scrollToTop();
+
+                $("#create-dj-modal").css({opacity: 0.0}); 
+
+                $(document.body).addClass("dialogIsOpen");
+                $("#create-dj-modal").addClass("show-me");
+                $("#create-event-modal").addClass("prevent-interaction");
+
+                $("#create-dj-modal").animate({opacity: 1.0}, {duration: 100});
+            }
+            function hideDJModal(){
+                $("#create-dj-modal").animate({opacity: 0.0}, {duration: 400, complete: function(){                    
+                    $(document.body).removeClass("dialogIsOpen");
+                    $("#create-dj-modal").removeClass("show-me");
+                    $("#create-event-modal").removeClass("prevent-interaction");
+                    $("#create-dj-modal").css({opacity: 1.0}); 
+                }});
+            }
+
+            function clearDJModal(){
+                $("#dj-name-input").val( "" );
+                $("#dj-bio-input").val( "" );
+                $("#dj-id-text").text( "-1" );               
+                setImageInfo( "" ); //
+            }            
+
+            /*To start - reset id and picture flags*/
+            var didUploadImage = false;
+            var curId = -1;  
+            var imgurl = "";
+
+
+            /*1. Create new*/
+            $("#create-dj-show").click(function(){
+                console.log("Creating a DJ");
+                didUploadImage = false;
+                curId = -1; //Flag to say generate an ID Automatically
+                $("#dj-id-text").text( curId ); 
+                
+                clearDJModal();
+                showDJModal();
+
+            });
+            
+            /*2. Quit To leave*/
+            $("#create-dj-quit").click(function(){
+                hideDJModal();
+            });
+            
+            
+            /*3. Edit - Updating a current dj - take info from TR  and fill*/
+            $(document).on('click', ".dj-edit", function() {                                              
+                $("#dj-name-input").val( $(this).siblings('.dj-name').text() );
+                $("#dj-bio-input").val( $(this).siblings(".dj-bio").text() );
+                $("#dj-id-text").text( $(this).siblings(".dj-id").text() );               
+                setImageInfo( $(this).siblings(".dj-img-url").text() ); //Handles the preview, the text, and the variable
+                
+                showDJModal();
+            });
+            
+            
+            /*THE BIG DOG : Putting DJ info into database - new or updated*/
+            $("#create-dj").click(function(){
+
+                var name = $("#dj-name-input").val();
+                var bio = $("#dj-bio-input").val();
+                bio = bio.length > 0 ? bio : " ";
+                var id = curId;
+                var url = imgurl; //This is set in the dropzone callback (below)
+
+                console.log("Sending this info to database---", "name:", name, "bio:", bio, "id:", id, "img:", url);            
+
+                /*Only upload the rest of the data if the picture exists on the server OR its an edit*/
+                var editId = parseInt( $("#dj-id-text").text() ); //dont know why creating a local one is better just seems right
+                if (didUploadImage || editId !== -1){
+
+                    /*CALL DIFFERENT PHPs or at least call diff SQL Shit*/
+                    if (editId === -1){ //Create a new
+                        createNewDJ(name, bio, url);
+                    } else { //Update a current DJ with curID
+                        updateDJ(name, bio, imgurl, editId);
+                    }
+
+                    //RESET FIELDS
+                    $("#dj-name-input").val("");
+                    $("#dj-bio-input").text("");
+                    $("#dj-id-text").text("");
+                    setImageInfo( "" );
+
+                    //HIDE THE MODAL
+                    hideDJModal();
+                    
+                } else {
+                    alert("Please wait until picture has been uploaded...");
+                }                                
+            });
+
+$("#delete-dj").click(function(){
+    var deleteId = parseInt( $("#dj-id-text").text() ); 
+
+    if (deleteId === -1){
+        alert("This DJ isnt actually in the system yet, and so can't be deleted");
+    } else {
+
+        var confirmText = "Do you want to delete " + $("#dj-name-input").val() + " from the system?";
+        if (confirm(confirmText)){
+                        var fileToDelete = $("#dj-pic-preview").attr('src'); //BY GETTING THE SRC-> You are point to the very file in the subdir
+                        deleteDJ(deleteId, fileToDelete);
+                        hideDJModal();
+                    }
+                }
+
+            });
+
+            /*
+             * Gotta write code that populates the table with the DJs and the events list with events 
+             */
+
+            //            Dropzone.init
+
+            $(window).load(function(){
+                var myDropzone = Dropzone.forElement("#dropzone-dj-pic");
+                console.log(myDropzone);
+                
+                myDropzone.on("success", function(file) {
+                    alert("Sucessfully uploaded dj image");
+                    didUploadImage = true;
+                    setImageInfo(file.name);
+
+                    myDropzone.removeAllFiles(true); //Removes the preview once file is uploaded...
+                });
+            });     
+            
+            function setImageInfo(filename){
+                imgurl = filename;
+                $("#dj-pic-input-name").text(imgurl);
+                $("#dj-pic-preview").attr('src', "dj-imgs/" + imgurl);
+            }
+
+            /* VIDEO VIDEO VIDEO VIDEO VIDEO VIDEO VIDEO VIDEO VIDEO VIDEO VIDEO VIDEO VIDEO VIDEO VIDEO */
+
+            $("#video-url-button").click(function(){
+                var url = $("#video-url").val();
+                setVideoURL(url);
+            });
+
+        </script>
+    </body>
+    </html>
